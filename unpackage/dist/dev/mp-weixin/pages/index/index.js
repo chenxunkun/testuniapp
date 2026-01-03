@@ -42,8 +42,14 @@ const _sfc_main = {
         duration: 1e3
       });
     };
+    const goDetail = (item) => {
+      const can = JSON.stringify(item);
+      common_vendor.index.navigateTo({
+        url: `/pages/detail/detail?item=${encodeURIComponent(can)}`
+      });
+    };
     common_vendor.onReachBottom(() => {
-      common_vendor.index.__f__("log", "at pages/index/index.vue:105", "触底");
+      common_vendor.index.__f__("log", "at pages/index/index.vue:112", "触底");
       setTimeout(() => {
         addRandomData();
       }, 1e3);
@@ -106,7 +112,8 @@ const _sfc_main = {
               }, item.isDot ? {
                 h: common_vendor.t(item.isDot)
               } : {}, {
-                i: index
+                i: index,
+                j: common_vendor.o(($event) => goDetail(item), index)
               });
             }),
             b: i0,
